@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>The public or company holidays within a work pattern</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Basis__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Basis of the recurring calculation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Basis of the recurring calculation</inlineHelpText>
+        <label>Basis</label>
+        <picklist>
+            <controllingField>Recurring__c</controllingField>
+            <picklistValues>
+                <fullName>Day of Week</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Day of Month</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Western Easter</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orthodox Easter</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>For recurring holidays, set the date this holiday fell in 2014</inlineHelpText>
+        <label>Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Day__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Day</label>
+        <picklist>
+            <controllingField>Basis__c</controllingField>
+            <picklistValues>
+                <fullName>1st</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2nd</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3rd</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4th</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5th</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Penultimate</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Last</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>21</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>22</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>23</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>24</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>25</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>26</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>27</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>28</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>29</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>31</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Month__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Month</label>
+        <picklist>
+            <controllingField>Basis__c</controllingField>
+            <picklistValues>
+                <fullName>January</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>February</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>March</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>April</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>May</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>June</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>July</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>August</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>September</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>October</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>November</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>December</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Month</controllingFieldValues>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Non_Workday_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <description>What action to take if the specified day is not a workday (i.e. on a weekend).  Previous workday always moves to before the weekend. Nearest workday moves to either the day before or the day after the weekend depending on which day of the weekend it falls.  Next workday always moves to after the weekend.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What action to take if the specified day is not a workday (i.e. on a weekend).</inlineHelpText>
+        <label>Non Workday Action</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Previous Workday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nearest Workday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Next Workday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Recurring__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Recurring</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Weekday__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Weekday</label>
+        <picklist>
+            <controllingField>Basis__c</controllingField>
+            <picklistValues>
+                <fullName>Sunday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Monday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tuesday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wednesday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Thursday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Friday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Saturday</fullName>
+                <default>false</default>
+                <controllingFieldValues>Day of Week</controllingFieldValues>
+                <controllingFieldValues>Orthodox Easter</controllingFieldValues>
+                <controllingFieldValues>Western Easter</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Work_Days__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Work Days Pattern</label>
+        <referenceTo>Work_Days_Pattern__c</referenceTo>
+        <relationshipLabel>Work Days Holidays</relationshipLabel>
+        <relationshipName>Work_Days_Holidays</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Work Days Holiday</label>
+    <nameField>
+        <label>Holiday Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Work Days Holidays</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

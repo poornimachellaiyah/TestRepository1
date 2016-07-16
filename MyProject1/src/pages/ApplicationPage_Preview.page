@@ -1,0 +1,321 @@
+<!-- Change log #1
+   
+   Created Date : 03/May/2016
+   Created By   : Dinesh-TPT
+   Purpose      : To display the application details as a preview before submitting the application form for Part-A and part-B
+-->           
+
+<apex:page controller="Job_ApplicationController" showHeader="false" sidebar="false">
+
+<apex:form >  
+         
+  <!-- Personal Details -->        
+    <apex:pageBlock title="Personal details" id="personal_details" rendered="{!NOT(isExistingApp)}"> 
+        
+         <!-- Display below details only for Part-A Application Form  -->
+        <apex:pageBlockSection id="pbs001" columns="2" >        
+            <apex:pageBlockSectionItem id="pbsi001">
+                <apex:outputLabel id="olblFirstName">First name</apex:outputLabel>
+                <apex:outputField value="{!Applicant.Firstname}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi002">
+                <apex:outputLabel id="olblLastName" >Last name</apex:outputLabel>
+                <apex:outputField value="{!Applicant.Lastname}"/>
+            </apex:pageBlockSectionItem> 
+            
+            <apex:pageBlockSectionItem id="pbsi003">
+                <apex:outputLabel id="olblMobilePhone">Mobile phone</apex:outputLabel>
+                <apex:outputField value="{!Applicant.Mobilephone}"/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi004">
+                <apex:outputLabel id="olblEmail">Email</apex:outputLabel>
+                <apex:outputField value="{!Applicant.npe01__HomeEmail__c}"/>
+            </apex:pageBlockSectionItem>            
+        </apex:pageBlockSection>
+  </apex:pageBlock>
+  
+   <!-- ADDRESS DETAILS -->    
+     <apex:pageBlock title="Address details" id="Add_details">  
+         <apex:pageBlockSection id="pbs002"  columns="1" collapsible="false">
+        
+            <apex:pageBlockSectionItem id="pbsi005">
+                <apex:outputLabel id="olblHouseStreet">House name/number</apex:outputLabel>
+                <apex:outputField value="{!Applicant.MailingStreet}"/>
+            </apex:pageBlockSectionItem> 
+            
+            <apex:pageBlockSectionItem id="pbsi006">
+                <apex:outputLabel id="olblCity">City</apex:outputLabel>
+                <apex:outputField value="{!Applicant.MailingCity}"/>                
+            </apex:pageBlockSectionItem>            
+           
+            <apex:pageBlockSectionItem id="pbsi007" rendered="{!isExistingApp}">
+                <apex:outputLabel id="olblState">State/province</apex:outputLabel>
+                <apex:outputField value="{!Applicant.MailingState}"/>                
+            </apex:pageBlockSectionItem>            
+
+            <apex:pageBlockSectionItem id="pbsi008" rendered="{!isExistingApp}">
+                <apex:outputLabel id="olblZip" >Zip/postal code/PO Box</apex:outputLabel>
+                <apex:outputField value="{!Applicant.MailingPostalCode}"/>                
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi009" rendered="{!NOT(isExistingApp)}">
+                <apex:outputLabel id="olblCountry">Country of residence</apex:outputLabel>
+                    <apex:outputField value="{!Applicant.MailingCountry}"/>                    
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>  
+     </apex:pageBlock>
+     
+     <!-- QUESTIONS -->
+    <apex:pageBlock id="application_questions" title="Application questions" rendered="{!(isQuestions && NOT(isExistingApp))}">
+        <apex:pageBlockSection id="pbs090" columns="1">
+            <apex:repeat id="rpt010" value="{!QuestionList}" var="ques"> 
+            <apex:pageBlockSectionItem id="pbsi090">
+                <apex:outputField value="{!ques.JobQuestion.Question__r.Question__c}" />
+                <apex:outputText value="{!ques.response}" />
+            </apex:pageBlockSectionItem>
+          </apex:repeat> 
+        </apex:pageBlockSection>        
+    </apex:pageBlock> 
+    
+    <!-- EXPERIENCE DETAILS -->    
+     <apex:pageBlock title="Experience details" id="Exp_details" rendered="{!NOT(isExistingApp)}">  
+     
+       <apex:pageBlockSection id="pbs003" columns="1">         
+            <apex:pageBlockSectionItem id="pbsi100">
+                <apex:outputlabel id="olblPreviouslyWorked" value="Please select one of the following options to confirm any history you may have had at VSO" style="display:block;width:300px;"/>
+                <apex:outputField value="{!jobApplication.Worked_for_VSO__c}" />
+            </apex:pageBlockSectionItem>           
+         
+          
+            <apex:pageBlockSectionItem id="pbsi073a">
+                <apex:outputLabel id="olblProfession">What is your primary skill/profession?</apex:outputLabel>                
+                {!professionValue}     
+                                       
+            </apex:pageBlockSectionItem>
+            
+           <apex:pageBlockSectionItem id="pbsiCurrEmp">
+                <apex:outputlabel id="olblCurrEmp" value="Are you currently in employment?"/>
+               <apex:outputField value="{!jobApplication.Are_you_currently_in_employment__c}"/>                
+           </apex:pageBlockSectionItem> 
+           
+           <apex:pageBlockSectionItem id="pbsi102">
+                <apex:outputlabel id="olblJobTitle" value="Current or most recent Job title" />
+               <apex:outputField value="{!jobApplication.Current_Most_Recent_Job_Title__c}"/>                
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi050">
+                <apex:outputLabel id="olblAvailableFrom">What is the earliest date available?</apex:outputLabel>
+               <apex:outputField value="{!Applicant.Available_From__c}"/>                
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsiAvailable">
+                <apex:outputlabel id="olblAvailable" value="How long are you available for?"/>
+               <apex:outputField value="{!jobApplication.How_Long_are_You_Available__c}"/>                
+           </apex:pageBlockSectionItem> 
+           
+       </apex:pageBlockSection>
+     </apex:pageBlock>
+     
+      <!-- EQUAL OPPOS -->
+    <apex:pageBlock id="EqualOpportunities" title="Equal opportunities and diversity" rendered="{!NOT(isExistingApp)}">
+           
+        <apex:pageBlockSection id="pbs004" columns="2">
+            <apex:pageBlockSectionItem id="pbsi190">
+                <apex:outputlabel id="olblGender" value="Gender"/>               
+                <apex:outputField value="{!Applicant.Gender__c}"/> 
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi192">
+                <apex:outputlabel id="olblNationality" value="Nationality"/>
+                <apex:outputField value="{!Applicant.Nationality_1__c}"/>                 
+            </apex:pageBlockSectionItem>    
+
+            <apex:pageBlockSectionItem id="pbsi194">
+                <apex:outputlabel id="olblAgeRange" value="Age range"/>
+                <apex:outputField value="{!Applicant.Age_Range__c}"/>                 
+            </apex:pageBlockSectionItem>           
+            
+            <apex:pageBlockSectionItem id="pbsi150">
+                <apex:outputlabel id="olblEducationLevel" value="Education Status" />
+                <apex:outputField value="{!Applicant.Current_Education_Level__c}"/>                 
+            </apex:pageBlockSectionItem>            
+            
+        </apex:pageBlockSection>
+        
+          <apex:pageBlockSection id="pbs005" columns="1">
+            
+            <apex:pageBlockSectionItem id="pbsi200">
+                <apex:outputlabel id="olblPostiveAbout"><apex:image id="imgPostiveAbout" value="{!$Resource.PositiveAboutDisabledPeople_Logo}" height="40px" width="50px" /></apex:outputlabel>
+                <apex:outputtext id="otxtPostiveInfo">We are positive about disabled people. If there is any information you feel is appropriate for us to consider under our commitment to opportunities for disabled people, please give details below:</apex:outputtext>
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi210">
+                <apex:outputlabel id="olblDisabilityConsideration" value=""/>
+                <apex:outputField value="{!jobApplication.Applicant_Disability_Considerations__c}"/>                 
+            </apex:pageBlockSectionItem>
+                                                            
+        </apex:pageBlockSection>   
+        
+    </apex:pageBlock>
+    
+     <!-- SOURCE INFO --> 
+    <apex:pageBlock title="Source information" id="source_information" rendered="{!isExistingApp}">
+        <apex:pageBlockSection id="pbs006" columns="1">
+            <apex:pageBlockSectionItem id="pbsi060">
+                <apex:outputLabel id="olblHeardVacancy" value="Please indicate how you heard about this vacancy" style="display:block;width:340px;"/>
+                <apex:outputField id="ifldHeardVacancy" value="{!jobApplication.How_Did_You_Hear_About_Us__c}"  />
+            </apex:pageBlockSectionItem>
+ 
+            <apex:pageBlockSectionItem id="pbsi061">
+                <apex:outputLabel id="olblSocialMediaSpecify" value="If social media, please specify" style="display:block;width:340px;"/>
+                <apex:outputField id="ifldSocialMediaSpecify" value="{!jobApplication.How_did_you_hear_social__c}"/>
+            </apex:pageBlockSectionItem>        
+
+            <apex:pageBlockSectionItem id="pbsi062">
+                <apex:outputLabel id="olblReferralSpecify" value="If referral, please specify" style="display:block;width:340px;"/>
+                <apex:outputField id="ifldReferralSpecify" value="{!jobApplication.How_did_you_hear_referral__c}"/>
+            </apex:pageBlockSectionItem> 
+
+            <apex:pageBlockSectionItem id="pbsi063">
+                <apex:outputLabel id="olblAlumnusSpecify" value="If alumnus, please specify" style="display:block;width:340px;"/>
+               <apex:outputField id="ifldAlumnusSpecify" value="{!jobApplication.How_did_you_hear_Alumnus__c}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi063a">
+                <apex:outputLabel id="olblOtherSpecify" value="Please provide further details of where you saw this opportunity advertised"/>
+                <apex:outputField id="ifldOtherSpecify" value="{!jobApplication.How_Did_You_Hear_Other__c}"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>  
+    
+    <!-- LANGUAGES & SKILLS SECTION --> 
+    <apex:pageBlock title="Languages and skills" id="languages_skills" rendered="{!isExistingApp}">
+        <apex:pageBlockSection id="pbs007" columns="2">
+            
+            <apex:pageBlockSectionItem id="pbsi070">
+                <apex:outputlabel id="olblLanguage1" value="Language 1"/>
+                <apex:outputField id="ifldLanguage1" value="{!Applicant.Language_1__c}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi071">
+                <apex:outputlabel id="olblLanguage2" value="Language 2"/>
+                <apex:outputField id="ifldLanguage2" value="{!Applicant.Language_2__c}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi072">
+                <apex:outputlabel id="olblLanguage3" value="Language 3"/>
+                <apex:outputField id="ifldLanguage3" value="{!Applicant.Language_3__c}" />
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi073">
+                <apex:outputlabel id="olblLanguage4" value="Language 4"/>
+                <apex:outputField id="ifldLanguage4" value="{!Applicant.Language_4__c}" />
+            </apex:pageBlockSectionItem>
+                        
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+     <!-- SUPPORTING STATEMENT  -->
+    <apex:pageBlock id="SupportingStatement" title="Supporting statement" rendered="{!isExistingApp}">
+    <apex:outputtext id="otxtSupportingInfo" >Please use this section to detail your skills and experience in relation to the person specification attached to the job advert. 
+       If you are applying to a generic advert (i.e. not applying to a specific role), please use this section to detail your current skills and opportunities you are interested in. Your supporting statement should be no longer than 1500 words.</apex:outputtext>
+ 
+    <apex:pageBlockSection id="pbs008" columns="1">
+        <apex:pageBlockSectionItem id="pbsi160">
+               <apex:outputField id="itaJobEvidence" value="{!jobApplication.Supporting_Statement__c}" style="width:100%;"/>
+        </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+    </apex:pageBlock>  
+    
+     <!-- Referee Details --> 
+    <apex:pageBlock id="RefereeInformation" title="Referee Details" rendered="{!isExistingApp}">        
+        <apex:outputtext id="otxtRefHeader">Please provide the details of two professional referees who have agreed to supply references.
+         The referees should be for your last two positions and should be your line/department manager, or someone in a position of responsibility for any work experience or placement undertaken. 
+         If you are a student or trainee this should include a teacher/tutor at your education institution. VSO will only contact referees with your prior consent.
+        </apex:outputtext>     
+        <apex:pageblockSection id="Referee1" title="Referee 1" columns="2">       
+            <apex:pageBlockSectionItem id="pbsiRef1FirstName">
+                <apex:outputlabel id="olblRef1FirstName" value="Referee First Name"/>
+                 <apex:outputField id="ifldRef1FirstName" value="{!jobApplication.Referee_1_First_Name__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef1LastName">
+                <apex:outputlabel id="olblRef1LastName" value="Referee Last Name"/>
+                 <apex:outputField id="ifldRef1LastName" value="{!jobApplication.Referee_1_Last_Name__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef1Relationship">
+                <apex:outputlabel id="olblRef1Relationship" value="Relationship To You"/>
+                 <apex:outputField id="ifldRef1FRelationship" value="{!jobApplication.Referee_1_Relationship_To_You__c}" />
+            </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem id="pbsiRef1RelationshipOther">
+                <apex:outputlabel id="olblRef1RelationshipOther" value="Relationship To You-Other(Please Specify)"/>
+                 <apex:outputField id="ifldRef1FRelationshipOther" value="{!jobApplication.Referee_1_Relationship_To_You_Other__c}" />
+            </apex:pageBlockSectionItem> 
+             <apex:pageBlockSectionItem id="pbsiRef1JobTitle">
+                <apex:outputlabel id="olblRef1JobTitle" value="Referee Job Title"/>
+                 <apex:outputField id="ifldRef1JobTitle" value="{!jobApplication.Referee_1_Job_Title__c}" />
+            </apex:pageBlockSectionItem> 
+             <apex:pageBlockSectionItem id="pbsiRef1Org">
+                <apex:outputlabel id="olblRef1Org" value="Referee Organisation"/>
+                 <apex:outputField id="ifldRef1Org" value="{!jobApplication.Referee_1_Organisation__c}" />
+            </apex:pageBlockSectionItem>            
+             <apex:pageBlockSectionItem id="pbsiRef1Email">
+                <apex:outputlabel id="olblRef1Email" value="Work Email"/>
+                 <apex:outputField id="ifldRef1Email" value="{!jobApplication.Referee_1_Email__c}" />
+            </apex:pageBlockSectionItem>   
+             <apex:pageBlockSectionItem id="pbsiRef1Phone">
+                <apex:outputlabel id="olblRef1Phone" value="Telephone"/>
+                 <apex:outputField id="ifldRef1Phone" value="{!jobApplication.Referee_1_Telephone__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef1Approach">
+                <apex:outputlabel id="olblRef1Approach" value="Ok To Approach Referee Before Offer?"/>
+                 <apex:outputField id="ifldRef1Approach" value="{!jobApplication.Referee_1_Approach_Before_Offer__c}" />
+            </apex:pageBlockSectionItem>            
+        </apex:pageblockSection>       
+        
+        <apex:pageblockSection id="Referee2" columns="2" title="Referee 2">        
+            <apex:pageBlockSectionItem id="pbsiRef2FirstName">
+                <apex:outputlabel id="olblRef2FirstName" value="Referee First Name"/>
+                 <apex:outputField id="ifldRef2FirstName" value="{!jobApplication.Referee_2_First_Name__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef2LastName">
+                <apex:outputlabel id="olblRef2LastName" value="Referee Last Name"/>
+                 <apex:outputField id="ifldRef2LastName" value="{!jobApplication.Referee_2_Last_Name__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef2Relationship">
+                <apex:outputlabel id="olblRef2Relationship" value="Relationship To You"/>
+                 <apex:outputField id="ifldRef2FRelationship" value="{!jobApplication.Referee_2_Relationship_To_You__c}" />
+            </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem id="pbsiRef2RelationshipOther">
+                <apex:outputlabel id="olblRef2RelationshipOther" value="Relationship To You-Other(Please Specify)"/>
+                 <apex:outputField id="ifldRef2FRelationshipOther" value="{!jobApplication.Referee_2_Relationship_To_You_Other__c}" />
+            </apex:pageBlockSectionItem> 
+             <apex:pageBlockSectionItem id="pbsiRef2JobTitle">
+                <apex:outputlabel id="olblRef2JobTitle" value="Referee Job Title"/>
+                 <apex:outputField id="ifldRef2JobTitle" value="{!jobApplication.Referee_2_Job_Title__c}" />
+            </apex:pageBlockSectionItem> 
+             <apex:pageBlockSectionItem id="pbsiRef2Org">
+                <apex:outputlabel id="olblRef2Org" value="Referee Organisation"/>
+                 <apex:outputField id="ifldRef2Org" value="{!jobApplication.Referee_2_Organisation__c}" />
+            </apex:pageBlockSectionItem>            
+             <apex:pageBlockSectionItem id="pbsiRef2Email">
+                <apex:outputlabel id="olblRef2Email" value="Work Email"/>
+                <apex:outputField id="ifldRef2Email" value="{!jobApplication.Referee_2_Email__c}" />
+            </apex:pageBlockSectionItem>   
+             <apex:pageBlockSectionItem id="pbsiRef2Phone">
+                <apex:outputlabel id="olblRef2Phone" value="Telephone"/>
+                 <apex:outputField id="ifldRef2Phone" value="{!jobApplication.Referee_2_Telephone__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsiRef2Approach">
+                <apex:outputlabel id="olblRef2Approach" value="Ok To Approach Referee Before Offer?"/>
+                 <apex:outputField id="ifldRef2Approach" value="{!jobApplication.Referee_2_Approach_Before_Offer__c}"/>
+            </apex:pageBlockSectionItem>            
+        </apex:pageblockSection> 
+        
+    </apex:pageBlock>    
+     
+  
+ </apex:form> 
+</apex:page>
